@@ -29,17 +29,17 @@ class DayItem extends StatelessWidget {
   final bool shrink;
 
   GestureDetector _buildDay(BuildContext context) {
-    final textStyle = TextStyle(
+    final textStyle = Theme.of(context).textTheme.titleMedium?.copyWith(
       color: available
           ? dayColor ?? Theme.of(context).colorScheme.secondary
           : dayColor?.withOpacity(0.5) ??
               Theme.of(context).colorScheme.secondary.withOpacity(0.5),
-      fontSize: shrink ? 14 : 32,
+      fontSize: shrink ? 12 : 16,
       fontWeight: FontWeight.normal,
     );
-    final selectedStyle = TextStyle(
+    final selectedStyle = Theme.of(context).textTheme.titleMedium?.copyWith(
       color: activeDayColor ?? Colors.white,
-      fontSize: shrink ? 14 : 32,
+      fontSize: shrink ? 12 : 16,
       fontWeight: FontWeight.bold,
       height: 0.8,
     );
@@ -51,19 +51,14 @@ class DayItem extends StatelessWidget {
             ? BoxDecoration(
                 color: activeDayBackgroundColor ??
                     Theme.of(context).colorScheme.secondary,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(2),
               )
             : const BoxDecoration(color: Colors.transparent),
-        height: shrink ? 40 : 70,
-        width: shrink ? 33 : 60,
+        width: shrink ? 33 : 50,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            if (isSelected) ...[
-              SizedBox(height: shrink ? 6 : 7),
-              if (!shrink) _buildDots(),
-              SizedBox(height: shrink ? 9 : 12),
-            ] else
-              SizedBox(height: shrink ? 10 : 14),
+
             Text(
               dayNumber.toString(),
               style: isSelected ? selectedStyle : textStyle,

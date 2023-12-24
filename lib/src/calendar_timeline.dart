@@ -14,6 +14,7 @@ typedef OnDateSelected = void Function(DateTime);
 /// the same or before [lastDate]. [firstDate] must not be [null].
 /// [lastDate] must not be null and the same or after [firstDate]
 class CalendarTimeline extends StatefulWidget {
+
   CalendarTimeline({
     Key? key,
     required this.initialDate,
@@ -24,6 +25,7 @@ class CalendarTimeline extends StatefulWidget {
     this.leftMargin = 0,
     this.dayColor,
     this.activeDayColor,
+    this.activeMonthColor,
     this.activeBackgroundDayColor,
     this.monthColor,
     this.dotsColor,
@@ -61,6 +63,7 @@ class CalendarTimeline extends StatefulWidget {
   final Color? dayColor;
   final Color? activeDayColor;
   final Color? activeBackgroundDayColor;
+  final Color? activeMonthColor;
   final Color? monthColor;
   final Color? dotsColor;
   final Color? dayNameColor;
@@ -407,7 +410,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
                   onTap: () => _onSelectMonth(index),
                   color: widget.monthColor,
                   shrink: widget.shrink,
-                  activeColor: widget.activeBackgroundDayColor,
+                  activeColor: widget.activeMonthColor,
                 ),
                 if (index == _months.length - 1)
                   // Last element to take space to do scroll to left side
@@ -430,7 +433,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
   Widget _buildDayList() {
     return SizedBox(
       key: const Key('ScrollableDayList'),
-      height: 70,
+      height: 50,
       child: ScrollablePositionedList.builder(
         itemScrollController: _controllerDay,
         initialScrollIndex: _daySelectedIndex ?? 0,
