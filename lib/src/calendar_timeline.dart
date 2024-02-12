@@ -385,7 +385,6 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
         itemBuilder: (BuildContext context, int index) {
           final currentDate = _months[index];
           final monthName = DateFormat.MMMM(_locale).format(currentDate);
-
           return Padding(
             padding: const EdgeInsets.only(right: 12, left: 4),
             child: Row(
