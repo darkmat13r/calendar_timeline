@@ -1,3 +1,4 @@
+import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 
 /// Creates a Widget to represent the months.
@@ -23,7 +24,7 @@ class MonthItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap as void Function()?,
       child: Text(
-        name.toUpperCase(),
+        name.capitalize(),
         style: TextStyle(
           fontSize: shrink ? 10 : 14,
           color: isSelected
