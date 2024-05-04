@@ -429,8 +429,8 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
     );
   }
 
-  /// Creates the row with the day of the [selectedDate.month]. If the
-  /// [selectedDate.year] && [selectedDate.month] is the [widget.firstDate] or [widget.lastDate]
+  /// Creates the row with the day of the [selectedDateStr.month]. If the
+  /// [selectedDateStr.year] && [selectedDateStr.month] is the [widget.firstDate] or [widget.lastDate]
   /// the days show will be the available
   Widget _buildDayList() {
     return SizedBox(
